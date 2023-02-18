@@ -7,7 +7,7 @@ Initial model performance was not great since no data pre-processing and feature
 taken place. It was also required to replace predicted negative numbers with 0.
 
 ### What was the top ranked model that performed?
-Top ranked raw model was: WeightedEnsemble_L3, RMSE on training data: 52.76, RMSLE on test data: 1.80912
+Top ranked raw model was: WeightedEnsemble_L3, RMSE on training data: 53.099, RMSLE on test data: 1.79163
 
 ## Exploratory data analysis and feature creation
 ### What did the exploratory analysis find and how did you add additional features?
@@ -21,12 +21,12 @@ The new features should help the model differentiate better between different we
 Two iterations adding features were carried out:
 - Iteration 'add_new_features1'  added 'year', 'month', 'day', 'weekday', 'hour' and removed
 'atemp', 'workingday', 'holiday' from training data (as well as 'casual','registered'). 
-Best model was: WeightedEnsemble_L3. RMSE on train data: 31.52, RMSLE on test data: 0.81364
+Best model was: WeightedEnsemble_L3. RMSE on train data: 31.490, RMSLE on test data: 0.80253
 
 - Iteration 'add_new_features2'  also added 'year', 'month', 'day', 'weekday', 'hour' and removed
 'atemp', 'holiday', 'workingday' but then used 'windspeed_level', 'humidity_level', 'temp_level' and removed the 
 raw variables 'temp', 'windspeed', 'humidity' from training data (as well as 'casual','registered').
-Best model was: WeightedEnsemble_L3. RMSE on train data: 31.58, RMSLE on test data: 0.81276
+Best model was: WeightedEnsemble_L3. RMSE on train data: 31.53, RMSLE on test data: 0.80852
 
 ## Hyper parameter tuning
 ### How much better did your model preform after trying different hyper parameters?
@@ -53,8 +53,8 @@ applying e.g. a log-transform to the target variable prior to prediction is expe
 ### Create a table with the models you ran, the hyperparameters modified, and the kaggle score - Note: Kaggle score is in RMSLE rather than RMSE. 
 |model|hpo1|hpo2|hpo3|score|
 |--|--|--|--|--|
-|initial|default|default|default|1.80|
-|add_features1|default|default|default|0.81|
+|initial|default|default|default|1.79|
+|add_features1|default|default|default|0.80|
 |add_features2|default|default|default|0.81|
 |hpo|NN_TORCH: num_epochs, learning_rate, dropout_prob|GBM: num_boost_rounds, n_estimators|XGB: num_boost_rounds, n_estimators|0.49|
 
@@ -63,6 +63,7 @@ applying e.g. a log-transform to the target variable prior to prediction is expe
 ![model_train_score.png](img/model_train_score.png)
 
 ### Create a line plot showing the top kaggle score for the three (or more) prediction submissions during the project.
+
 
 ![model_test_score.png](img/model_test_score.png)
 
